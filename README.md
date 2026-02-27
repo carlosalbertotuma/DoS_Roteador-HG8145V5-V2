@@ -98,10 +98,8 @@ PoC: https://www.youtube.com/watch?v=K5eu2ZO_omM
 - http.title:"HG8145V5"
 
 <img width="1898" height="1002" alt="image" src="https://github.com/user-attachments/assets/bc805f22-f968-4f2c-b401-e9859ed2242e" />
-<img width="1898" height="1002" alt="image" src="https://github.com/user-attachments/assets/bc805f22-f968-4f2c-b401-e9859ed2242e" />
 
 
-<img width="1679" height="699" alt="image" src="https://github.com/user-attachments/assets/7ad6b4ab-3f9f-4c9a-a787-bf73fab0ef96" />
 <img width="1679" height="699" alt="image" src="https://github.com/user-attachments/assets/7ad6b4ab-3f9f-4c9a-a787-bf73fab0ef96" />
 
 
