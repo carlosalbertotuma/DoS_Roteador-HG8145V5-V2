@@ -2,15 +2,15 @@
 
 Presentation:
 
-Security vulnerability: WAN Connectivity Denial of Service
-Vulnerability Type: Resource Exhaustion / Network State Handling Failure
-CWE: CWE-400 (Uncontrolled Resource Consumption) / CWE-404 (Improper Resource Shutdown or Release)
-CVE: Pending Assignment
-Affected Component: WAN forwarding plane / NAT session handling
-Software: Huawei EchoLife HG8145V5 GPON Terminal
-Version: V5R022C10S293 (Hardware 26AD.A – OI2WIFI Custom)
-Business area: Telecommunications / ISP Infrastructure / FTTH
-Submitter: bl4dsc4n
+- Security vulnerability: WAN Connectivity Denial of Service
+- Vulnerability Type: Resource Exhaustion / Network State Handling Failure
+- CWE: CWE-400 (Uncontrolled Resource Consumption) / CWE-404 (Improper Resource Shutdown or Release)
+- CVE: Pending Assignment
+- Affected Component: WAN forwarding plane / NAT session handling
+- Software: Huawei EchoLife HG8145V5 GPON Terminal
+- Version: V5R022C10S293 (Hardware 26AD.A – OI2WIFI Custom)
+- Business area: Telecommunications / ISP Infrastructure / FTTH
+- Submitter: bl4dsc4n
 
 Overview
 
@@ -111,3 +111,5 @@ Monitor session counts and abnormal traffic
 Apply firmware updates when available
 
 Restrict high-rate traffic generation from LAN clients
+
+PoC: https://www.youtube.com/watch?v=K5eu2ZO_omM
