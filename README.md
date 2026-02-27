@@ -1,6 +1,6 @@
 # DoS_Roteador-HG8145V5-V2
 
-Presentation:
+## Presentation:
 
 - Security vulnerability: WAN Connectivity Denial of Service
 - Vulnerability Type: Resource Exhaustion / Network State Handling Failure
@@ -12,21 +12,18 @@ Presentation:
 - Business area: Telecommunications / ISP Infrastructure / FTTH
 - Submitter: bl4dsc4n
 
-Overview
+## Overview
 
 A denial-of-service condition was identified in the Huawei EchoLife HG8145V5 GPON terminal running firmware V5R022C10S293.
 
 Under sustained high-rate outbound traffic (e.g., scanning or fuzzing activity) generated from a LAN-connected host, the device experiences complete WAN connectivity loss affecting all connected clients.
 
-During the stress condition:
+## During the stress condition:
 
-The device remains reachable via its local management interface (192.168.100.1)
-
-ICMP to the local gateway continues to function
-
-ICMP to external hosts (e.g., 8.8.8.8) fails
-
-All outbound TCP sessions fail with connection timeouts
+- The device remains reachable via its local management interface (192.168.100.1)
+- ICMP to the local gateway continues to function
+- ICMP to external hosts (e.g., 8.8.8.8) fails
+- All outbound TCP sessions fail with connection timeouts
 
 Multiple LAN devices (PC and mobile) simultaneously lose Internet access
 
@@ -34,65 +31,47 @@ Connectivity is immediately restored once the high-rate traffic is stopped.
 
 This behavior indicates degradation or exhaustion within the WAN forwarding path or internal session/state handling mechanisms rather than a full system crash.
 
-Impact
+## Impact
 
-Complete loss of Internet connectivity
-
-All LAN-connected devices affected
-
-No authentication required (LAN-adjacent trigger)
-
-High availability impact
+- Complete loss of Internet connectivity
+- All LAN-connected devices affected
+- No authentication required (LAN-adjacent trigger)
+- High availability impact
 
 The device does not reboot or crash, but effectively becomes unable to route external traffic while under stress.
 
-Technical Details
+## Technical Details
 
 Observed Environment:
 
-Device: Huawei EchoLife HG8145V5
+- Device: Huawei EchoLife HG8145V5
+- Firmware: V5R022C10S293
+- Hardware: 26AD.A
+- Custom Info: OI2WIFI
+- ONT Status: O5 (Operational)
 
-Firmware: V5R022C10S293
+## Behavior Characteristics:
 
-Hardware: 26AD.A
+- LAN control plane remains responsive
+- WAN data plane becomes unavailable
+- Recovery is immediate upon traffic cessation
+- No reboot required
 
-Custom Info: OI2WIFI
+## This suggests potential:
 
-ONT Status: O5 (Operational)
+- NAT/Conntrack table exhaustion
+- Session state mismanagement
+- Forwarding plane degradation under stress
 
-CPU Usage during test: ~4%
-
-Memory Usage: ~63%
-
-Behavior Characteristics:
-
-LAN control plane remains responsive
-
-WAN data plane becomes unavailable
-
-Recovery is immediate upon traffic cessation
-
-No reboot required
-
-This suggests potential:
-
-NAT/Conntrack table exhaustion
-
-Session state mismanagement
-
-Forwarding plane degradation under stress
-
-Proof of Concept
+## Proof of Concept
 
 The issue can be reproduced by generating sustained high-rate outbound traffic from a single LAN host targeting external Internet services.
 
-PoC demonstration shows:
+## PoC demonstration shows:
 
-Simultaneous WAN loss for multiple devices
-
-Local management interface remains accessible
-
-External ICMP and TCP fail
+- Simultaneous WAN loss for multiple devices
+- Local management interface remains accessible
+- External ICMP and TCP fail
 
 Immediate recovery when stress traffic stops
 
@@ -113,3 +92,16 @@ Apply firmware updates when available
 Restrict high-rate traffic generation from LAN clients
 
 PoC: https://www.youtube.com/watch?v=K5eu2ZO_omM
+
+## Shodan
+
+- http.title:"HG8145V5"
+
+<img width="1898" height="1002" alt="image" src="https://github.com/user-attachments/assets/bc805f22-f968-4f2c-b401-e9859ed2242e" />
+<img width="1898" height="1002" alt="image" src="https://github.com/user-attachments/assets/bc805f22-f968-4f2c-b401-e9859ed2242e" />
+
+
+<img width="1679" height="699" alt="image" src="https://github.com/user-attachments/assets/7ad6b4ab-3f9f-4c9a-a787-bf73fab0ef96" />
+<img width="1679" height="699" alt="image" src="https://github.com/user-attachments/assets/7ad6b4ab-3f9f-4c9a-a787-bf73fab0ef96" />
+
+
